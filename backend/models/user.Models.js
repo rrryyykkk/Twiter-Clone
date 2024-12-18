@@ -4,21 +4,21 @@ const userSchema = new mongoose.Schema(
   {
     userName: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     fullName: {
       type: String,
-      require: true,
+      required: true,
     },
     password: {
       type: String,
-      require: true,
+      required: true,
       minLength: 8,
     },
     email: {
       type: String,
-      require: true,
+      required: true,
       unique: true,
     },
     followers: [
@@ -54,7 +54,7 @@ const userSchema = new mongoose.Schema(
       default: "",
     },
   },
-  { Timestamp: true }
+  { timestamps: true }
 );
 
 const User = mongoose.model("User", userSchema);
