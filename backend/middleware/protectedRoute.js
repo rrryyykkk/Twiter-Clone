@@ -1,3 +1,5 @@
+import mongoose from "mongoose";
+import jwt from "jsonwebtoken";
 import User from "../models/user.Models.js";
 
 export const protectRoute = async (req, res, next) => {
@@ -8,11 +10,12 @@ export const protectRoute = async (req, res, next) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    if (!decoded) {
-      return res.status(401).json({ error: "Unathorized: Invalid Token" });
-    }
 
-    const user = await User.findById(decoded.userId).select("-password");
+    const userId = mongoose.Types.ObjectId.isValid(decoded.userId)
+      ? new mongoose.Types.ObjectId(decoded.userId)
+      : decoded.userId;
+
+    const user = await User.findById(userId).select("-password");
 
     if (!user) {
       return res.status(401).json({ error: "User not found" });
@@ -21,7 +24,7 @@ export const protectRoute = async (req, res, next) => {
     req.user = user;
     next();
   } catch (error) {
-    console.log("Error in protectRoute middleware", error.message);
+    console.error("Error in protectRoute middleware:", error.stack);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };

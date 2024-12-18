@@ -14,7 +14,7 @@ pids/
 *.pid
 *.seed
 *.pid.lock
-
+ 
 # Environment variables
 .env
 
@@ -22,10 +22,19 @@ pids/
 .vscode/
 .idea/
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
 
 # Compiled files
 dist/
 build/
+dist-ssr
+*.local
+
 
 # Cache
 *.cache
