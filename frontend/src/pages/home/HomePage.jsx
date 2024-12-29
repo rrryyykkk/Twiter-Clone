@@ -1,6 +1,6 @@
 import { useState } from "react";
-import CreatePost from "./CreatePost";
-import Post from "../../components/common/Post";
+// import CreatePost from "./CreatePost";
+// import Post from "../../components/common/Post";
 
 const HomePage = () => {
   const [feedType, setFeedType] = useState("forYou");
@@ -16,22 +16,22 @@ const HomePage = () => {
           {feedType === "forYou" && (
             <div className="absolute bottom-0 w-10 h-1 rounded-full bg-primary"></div>
           )}
-          <div
-            className="flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 cursor-pointer relative"
-            onClick={() => setFeedType("following")}
-          >
-            Following
-            {feedType === "following" && (
-              <div className="absolute bottom-0 w-10 h-1 rounded-full bg-primary"></div>
-            )}
-          </div>
+        </div>
+        <div
+          className="flex justify-center flex-1 p-3 hover:bg-secondary transition duration-300 cursor-pointer relative"
+          onClick={() => setFeedType("following")}
+        >
+          Following
+          {feedType === "following" && (
+            <div className="absolute bottom-0 w-10 h-1 rounded-full bg-primary"></div>
+          )}
         </div>
 
         {/* create post input */}
-        <CreatePost />
+        {/* <CreatePost /> */}
 
         {/* Post */}
-        <Post />
+        {/* <Post /> */}
       </div>
     </div>
   );
