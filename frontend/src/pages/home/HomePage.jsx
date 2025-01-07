@@ -1,6 +1,6 @@
 import { useState } from "react";
-// import CreatePost from "./CreatePost";
-// import Post from "../../components/common/Post";
+import CreatePost from "./CreatePost";
+import Posts from "./Posts";
 
 const HomePage = () => {
   const [feedType, setFeedType] = useState("forYou");
@@ -26,13 +26,13 @@ const HomePage = () => {
             <div className="absolute bottom-0 w-10 h-1 rounded-full bg-primary"></div>
           )}
         </div>
-
-        {/* create post input */}
-        {/* <CreatePost /> */}
-
-        {/* Post */}
-        {/* <Post /> */}
       </div>
+
+      {/* create post input */}
+      <CreatePost />
+
+      {/* Post */}
+      <Posts />
     </div>
   );
 };
