@@ -5,6 +5,7 @@ import Notification from "../pages/notification/Notification";
 import ProfilePage from "../pages/profile/ProfilePage";
 import LoginPage from "../pages/auth/LoginPage";
 import SignUpPage from "../pages/auth/SignUpPage";
+import ProtectedRoute from "../protectRoutes/ProtectedRoute";
 
 const routes = createBrowserRouter([
   {
@@ -13,15 +14,27 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: (
+          <ProtectedRoute>
+            <HomePage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "notification",
-        element: <Notification />,
+        element: (
+          <ProtectedRoute>
+            <Notification />
+          </ProtectedRoute>
+        ),
       },
       {
-        path: "profile",
-        element: <ProfilePage />,
+        path: "profile/:username",
+        element: (
+          <ProtectedRoute>
+            <ProfilePage />,
+          </ProtectedRoute>
+        ),
       },
     ],
   },

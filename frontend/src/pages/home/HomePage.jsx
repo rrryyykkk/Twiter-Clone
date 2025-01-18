@@ -1,9 +1,12 @@
 import { useState } from "react";
 import CreatePost from "./CreatePost";
 import Posts from "./Posts";
+import { useAuth } from "../../context/AuthProvider";
 
 const HomePage = () => {
   const [feedType, setFeedType] = useState("forYou");
+  const authUser = useAuth()
+
   return (
     <div className="flex-[4_4_0] mr-auto border-r border-gray-700 min-h-screen">
       {/* header */}
@@ -29,10 +32,10 @@ const HomePage = () => {
       </div>
 
       {/* create post input */}
-      <CreatePost />
+      <CreatePost authUser={authUser} />
 
       {/* Post */}
-      <Posts />
+      <Posts feedType={feedType} authUser={authUser} />
     </div>
   );
 };

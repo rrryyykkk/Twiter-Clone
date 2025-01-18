@@ -38,7 +38,7 @@ const EditProfilePage = () => {
               <input
                 type="text"
                 placeholder="Full Name"
-                className="flex-1 input border border-gary-700 rounded p-2 input-md"
+                className="flex-1 input border border-gray-700 rounded p-2 input-md"
                 value={formData.fullName}
                 name="fullName"
                 onChange={handleInputChange}
@@ -46,7 +46,7 @@ const EditProfilePage = () => {
               <input
                 type="text"
                 placeholder="Username"
-                className="flex-1 input border border-gary-700 rounded p-2 input-md"
+                className="flex-1 input border border-gray-700 rounded p-2 input-md"
                 value={formData.userName}
                 name="userName"
                 onChange={handleInputChange}
@@ -56,14 +56,14 @@ const EditProfilePage = () => {
               <input
                 type="email"
                 placeholder="Email"
-                className="flex-1 input border border-gary-700 rounded p-2 input-md"
+                className="flex-1 input border border-gray-700 rounded p-2 input-md"
                 value={formData.email}
                 name="email"
                 onChange={handleInputChange}
               />
               <textarea
                 placeholder="Bio"
-                className="flex-1 input border border-gary-700 rounded p-2 input-md"
+                className="flex-1 input border border-gray-700 rounded p-2 input-md"
                 value={formData.bio}
                 name="bio"
                 onChange={handleInputChange}
@@ -73,7 +73,7 @@ const EditProfilePage = () => {
               <input
                 type="password"
                 placeholder="Current Password"
-                className="flex-1 input border border-gary-700 rounded p-2 input-md"
+                className="flex-1 input border border-gray-700 rounded p-2 input-md"
                 value={formData.currentPassword}
                 name="currentPassword"
                 onChange={handleInputChange}
@@ -81,7 +81,7 @@ const EditProfilePage = () => {
               <input
                 type="password"
                 placeholder="New Password"
-                className="flex-1 input border border-gary-700 rounded p-2 input-md"
+                className="flex-1 input border border-gray-700 rounded p-2 input-md"
                 value={formData.newPassword}
                 name="newPassword"
                 onChange={handleInputChange}
