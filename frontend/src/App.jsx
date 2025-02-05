@@ -6,13 +6,15 @@ import { useQuery } from "@tanstack/react-query";
 import LoadingSpinner from "./components/common/LoadingSpinner";
 
 function App() {
-  const { isLoading, error, isError } = useQuery({
+  const { data: authUser, isLoading } = useQuery({
+    // we use queryKey to gigve a unique name to our query dan refer to it later
     queryKey: ["authUser"],
     queryFn: async () => {
       try {
         const res = await fetch("/api/auth/me");
         const data = await res.json();
 
+        if (data.error) return null;
         if (!res.ok) {
           throw new Error(data.error || "Something went wrong");
         }
@@ -22,6 +24,7 @@ function App() {
         throw new Error(error);
       }
     },
+    retry: false,
   });
 
   if (isLoading) {
@@ -31,12 +34,13 @@ function App() {
       </div>
     );
   }
+
   return (
     <div className="flex max-w-6xl mx-auto">
       {/* common component, bc it's not wrapped with Routes */}
-      <Sidebar />
+      {authUser && <Sidebar />}
       <Outlet />
-      <RightPanel />
+      {authUser && <RightPanel />}
       <Toaster position="bottom-right" reverseOrder={false} />
     </div>
   );

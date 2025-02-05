@@ -32,7 +32,7 @@ const routes = createBrowserRouter([
         path: "profile/:username",
         element: (
           <ProtectedRoute>
-            <ProfilePage />,
+            <ProfilePage />
           </ProtectedRoute>
         ),
       },

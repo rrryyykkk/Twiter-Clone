@@ -5,9 +5,9 @@ import XSvg from "../../components/svgs/X";
 import { MdOutlineMail } from "react-icons/md";
 import { MdPassword } from "react-icons/md";
 
-import { data, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useAuth } from "../../context/AuthProvider";
 
 const LoginPage = () => {
@@ -15,6 +15,9 @@ const LoginPage = () => {
     userName: "",
     password: "",
   });
+
+  const queryClient = useQueryClient();
+
   const { setAuthUser } = useAuth();
   const navigate = useNavigate();
 
@@ -41,7 +44,8 @@ const LoginPage = () => {
         throw error;
       }
     },
-    onSuccess: () => {
+    onSuccess: (data) => {
+      queryClient.invalidateQueries({ queryKey: ["authUser"] });
       setAuthUser(data);
       toast.success("Login Successful");
       navigate("/");

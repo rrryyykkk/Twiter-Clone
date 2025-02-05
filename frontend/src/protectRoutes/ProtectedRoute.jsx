@@ -2,7 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useAuth } from "../context/AuthProvider";
 
 const ProtectedRoute = ({ children }) => {
-  const authUser = useAuth();
+  const { authUser } = useAuth();
 
   console.log("authUser:", authUser);
 
