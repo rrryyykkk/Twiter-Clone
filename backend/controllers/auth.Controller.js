@@ -15,7 +15,7 @@ export const signup = async (req, res) => {
       userName: new RegExp(`^${userName}$`, "i"),
     });
     if (existingUser) {
-      return res.status(400).json({ error: "userName is already taken" });
+      return res.status(400).json({ error: "UserName is already taken" });
     }
 
     const existingEmail = await User.findOne({ email });
@@ -73,7 +73,7 @@ export const login = async (req, res) => {
     );
 
     if (!user || !isPasswordCorrect) {
-      return res.status(400).json({ error: "Invalid userName or password" });
+      return res.status(400).json({ error: "Invalid username or password" });
     }
 
     generateTokenAndCookies(user._id, res);
